@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import com.gmail.andersoninfonet.springboot2essentials.model.Anime;
+import com.gmail.andersoninfonet.springboot2essentials.request.AnimeRequestPost;
+import com.gmail.andersoninfonet.springboot2essentials.request.AnimeRequestPut;
 import com.gmail.andersoninfonet.springboot2essentials.service.AnimeService;
 import com.gmail.andersoninfonet.springboot2essentials.util.DateUtil;
 
@@ -42,7 +44,7 @@ public class AnimeController {
     }
 
     @PostMapping
-    public ResponseEntity<Anime> save(@RequestBody Anime anime) {
+    public ResponseEntity<Anime> save(@RequestBody AnimeRequestPost anime) {
         return ResponseEntity.status(HttpStatus.CREATED).body(service.save(anime));
     }
 
@@ -53,7 +55,7 @@ public class AnimeController {
     }
 
     @PutMapping
-    public ResponseEntity<Anime> replace(@RequestBody Anime anime) {
+    public ResponseEntity<Anime> replace(@RequestBody AnimeRequestPut anime) {
         service.replace(anime);
         return ResponseEntity.ok().build();
     }
