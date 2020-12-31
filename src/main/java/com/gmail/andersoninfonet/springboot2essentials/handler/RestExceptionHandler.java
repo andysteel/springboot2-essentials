@@ -33,8 +33,8 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
    * </p>
    *
    * @param ex a
-   *       {@link com.gmail.andersoninfonet.springboot2essentials.exception.AnimeBadRequestException}
-   *       object.
+   *      {@link com.gmail.andersoninfonet.springboot2essentials.exception.AnimeBadRequestException}
+   *      object.
    * @return a {@link org.springframework.http.ResponseEntity} object.
    */
   @ExceptionHandler(AnimeBadRequestException.class)
@@ -48,7 +48,9 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
       HttpStatus.BAD_REQUEST);
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
                                                                 HttpHeaders headers,
@@ -72,7 +74,9 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
                                                 HttpStatus.BAD_REQUEST);
   }
 
-  /** {@inheritDoc} */
+  /**
+   * {@inheritDoc}
+   */
   @Override
   protected ResponseEntity<Object> handleExceptionInternal(Exception ex,
                                                           @Nullable Object body,
