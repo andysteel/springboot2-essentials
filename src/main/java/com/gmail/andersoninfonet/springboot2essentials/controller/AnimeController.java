@@ -1,16 +1,15 @@
 package com.gmail.andersoninfonet.springboot2essentials.controller;
 
-import java.time.LocalDateTime;
-import java.util.List;
-
-import javax.validation.Valid;
-
 import com.gmail.andersoninfonet.springboot2essentials.model.Anime;
 import com.gmail.andersoninfonet.springboot2essentials.request.AnimeRequestPost;
 import com.gmail.andersoninfonet.springboot2essentials.request.AnimeRequestPut;
 import com.gmail.andersoninfonet.springboot2essentials.service.AnimeService;
 import com.gmail.andersoninfonet.springboot2essentials.util.DateUtil;
-
+import java.time.LocalDateTime;
+import java.util.List;
+import javax.validation.Valid;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -23,48 +22,98 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import lombok.RequiredArgsConstructor;
-import lombok.extern.log4j.Log4j2;
-
+/**
+ * <p>
+ * AnimeController class.
+ * </p>
+ *
+ * @author andysteel
+ * @version 1.0.0
+ */
 @RestController
 @RequestMapping("/animes")
 @Log4j2
 @RequiredArgsConstructor
 public class AnimeController {
 
-    private final DateUtil dateUtil;
-    private final AnimeService service;
+  /**
+  * The {@link com.gmail.andersoninfonet.springboot2essentials.util.DateUtil}
+  * property.
+  */
+  private final DateUtil dateUtil;
 
-    @GetMapping
-    public ResponseEntity<List<Anime>> list() {
-        log.info(dateUtil.formatLocalDateTimeToDataBaseStyle(LocalDateTime.now()));
-        return ResponseEntity.ok(service.list());
-    }
+  /**
+  * The
+  * {@link com.gmail.andersoninfonet.springboot2essentials.service.AnimeService}
+  * property.
+  */
+  private final AnimeService service;
 
-    @GetMapping(path = "/{id}")
-    public ResponseEntity<Anime> findById(@PathVariable long id) {
-        return ResponseEntity.ok(service.findById(id));
-    }
+  /**
+   * Method to return a list os Animes.
+   *
+   * @return ResponseEntity< List< Anime > >
+   */
+  @GetMapping
+  public ResponseEntity<List<Anime>> list() {
+    log.info(dateUtil.formatLocalDateTimeToDataBaseStyle(LocalDateTime.now()));
+    return ResponseEntity.ok(service.list());
+  }
 
-    @GetMapping(path = "/find")
-    public ResponseEntity<List<Anime>> findByName(@RequestParam String name) {
-        return ResponseEntity.ok(service.listByName(name));
-    }
+  /**
+   * Method to find an Anime by Id.
+   *
+   * @param id long
+   * @return ResponseEntity< Anime >
+   */
+  @GetMapping(path = "/{id}")
+  public ResponseEntity<Anime> findById(@PathVariable long id) {
+    return ResponseEntity.ok(service.findById(id));
+  }
 
-    @PostMapping
-    public ResponseEntity<Anime> save(@Valid  @RequestBody AnimeRequestPost anime) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(service.save(anime));
-    }
+  /**
+   * Method to find an Anime by name.
+   *
+   * @param name String
+   * @return ResponseEntity< List< Anime > >
+   */
+  @GetMapping(path = "/find")
+  public ResponseEntity<List<Anime>> findByName(@RequestParam String name) {
+    return ResponseEntity.ok(service.listByName(name));
+  }
 
-    @DeleteMapping(path = "/{id}")
-    public ResponseEntity<Void> delete(@PathVariable long id) {
-        service.delete(id);
-        return ResponseEntity.ok().build();
-    }
+  /**
+   * Method to save an Anime.
+   *
+   * @param anime AnimeRequestPost
+   * @return ResponseEntity< Anime >
+   */
+  @PostMapping
+  public ResponseEntity<Anime> save(@Valid @RequestBody AnimeRequestPost anime) {
+    return ResponseEntity.status(HttpStatus.CREATED).body(service.save(anime));
+  }
 
-    @PutMapping
-    public ResponseEntity<Anime> replace(@Valid  @RequestBody AnimeRequestPut anime) {
-        service.replace(anime);
-        return ResponseEntity.ok().build();
-    }
+  /**
+   * Method to delete an Anime.
+   *
+   * @param id long
+   * @return ResponseEntity< Void >
+   */
+  @DeleteMapping(path = "/{id}")
+  public ResponseEntity<Void> delete(@PathVariable long id) {
+    service.delete(id);
+    return ResponseEntity.ok().build();
+  }
+
+  /**
+   * Method to update an Anime.
+   *
+   * @param anime AnimeRequestPut
+   * @return ResponseEntity< Anime >
+   */
+  @PutMapping
+  public ResponseEntity<Anime> replace(@Valid @RequestBody AnimeRequestPut anime) {
+    service.replace(anime);
+    return ResponseEntity.ok().build();
+  }
 }

@@ -5,12 +5,19 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * <p>
+ * Anime class.
+ * </p>
+ *
+ * @author andysteel
+ * @version 1.0.0
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -18,10 +25,10 @@ import lombok.NoArgsConstructor;
 @Entity
 public class Anime {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
-    @Column(nullable = false)
-    private String name;
+  @Column(nullable = false)
+  private String name;
 }
