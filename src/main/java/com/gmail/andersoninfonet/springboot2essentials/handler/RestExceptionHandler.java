@@ -23,6 +23,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
  *
  * @author andysteel
  * @version 1.0.0
+ * @since 1.0.0
  */
 @ControllerAdvice
 public class RestExceptionHandler extends ResponseEntityExceptionHandler {
@@ -50,7 +51,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
   /**
    * {@inheritDoc}
-   */
+  */
   @Override
   protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
                                                                 HttpHeaders headers,
@@ -76,7 +77,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
   /**
    * {@inheritDoc}
-   */
+  */
   @Override
   protected ResponseEntity<Object> handleExceptionInternal(Exception ex,
                                                           @Nullable Object body,

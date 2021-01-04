@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
  *
  * @author andysteel
  * @version 1.0.0
+ * @since 1.0.0
  */
 @ResponseStatus(code = HttpStatus.BAD_REQUEST)
 public class AnimeBadRequestException extends RuntimeException {

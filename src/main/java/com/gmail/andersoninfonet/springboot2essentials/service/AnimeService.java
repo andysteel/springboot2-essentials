@@ -8,6 +8,8 @@ import com.gmail.andersoninfonet.springboot2essentials.request.AnimeRequestPost;
 import com.gmail.andersoninfonet.springboot2essentials.request.AnimeRequestPut;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,6 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
  *
  * @author andysteel
  * @version 1.0.0
+ * @since 1.0.0
  */
 @Service
 @RequiredArgsConstructor
@@ -31,10 +34,11 @@ public class AnimeService {
    * list.
    * </p>
    *
-   * @return a {@link java.util.List} object.
+   * @param pageable a {@link org.springframework.data.domain.Pageable} object.
+   * @return a {@link org.springframework.data.domain.Page} object.
    */
-  public List<Anime> list() {
-    return animeRepository.findAll();
+  public Page<Anime> list(Pageable pageable) {
+    return animeRepository.findAll(pageable);
   }
 
   /**

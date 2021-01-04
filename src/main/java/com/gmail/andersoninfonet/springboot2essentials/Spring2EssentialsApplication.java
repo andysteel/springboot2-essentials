@@ -10,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  *
  * @author andysteel
  * @version 1.0.0
+ * @since 1.0.0
  */
 @SpringBootApplication
 public class Spring2EssentialsApplication {
