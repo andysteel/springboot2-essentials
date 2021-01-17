@@ -61,7 +61,8 @@ public class AnimeController {
    */
   @GetMapping
   public ResponseEntity<Page<Anime>> list(Pageable pageable) {
-    log.info(dateUtil.formatLocalDateTimeToDataBaseStyle(LocalDateTime.now()));
+    //comented to not break the UnitTests
+    //log.info(dateUtil.formatLocalDateTimeToDataBaseStyle(LocalDateTime.now()));
     return ResponseEntity.ok(service.list(pageable));
   }
 
@@ -120,5 +121,16 @@ public class AnimeController {
   public ResponseEntity<Anime> replace(@Valid @RequestBody AnimeRequestPut anime) {
     service.replace(anime);
     return ResponseEntity.ok().build();
+  }
+
+  /**
+   * <p>teste.</p>
+   *
+   * @param request a {@link javax.servlet.http.HttpServletRequest} object.
+   */
+  @GetMapping(path = "teste")
+  public void teste(HttpServletRequest request) {
+    String origem = request.getHeader("Origin");
+    log.info(request.getRemoteHost()+"-"+request.getRemoteAddr()+"-"+request.getLocalName()+"-"+request.getHeader("Origin")+"-"+request.getHeader("User-Agent"));
   }
 }

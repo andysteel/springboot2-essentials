@@ -16,7 +16,6 @@
 	<properties>
 		<java.version>11</java.version>
 		<org.mapstruct.version>1.4.1.Final</org.mapstruct.version>
-		<checkfile.location>google_checks.xml</checkfile.location>
 		<checkstyle-maven-plugin.version>3.1.1</checkstyle-maven-plugin.version>
 		<maven-site-plugin.version>3.9.1</maven-site-plugin.version>
 	</properties>
@@ -54,6 +53,11 @@
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -102,9 +106,6 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-checkstyle-plugin</artifactId>
 				<version>${checkstyle-maven-plugin.version}</version>
-				<configuration>
-					<configLocation>${checkfile.location}</configLocation>
-				</configuration>
 				<executions>
 					<execution>
 						<goals>
