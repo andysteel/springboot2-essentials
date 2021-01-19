@@ -118,7 +118,7 @@ public class AnimeController {
    * @return ResponseEntity< Anime >
    */
   @PutMapping
-  public ResponseEntity<Anime> replace(@Valid @RequestBody AnimeRequestPut anime) {
+  public ResponseEntity<Void> replace(@Valid @RequestBody AnimeRequestPut anime) {
     service.replace(anime);
     return ResponseEntity.ok().build();
   }

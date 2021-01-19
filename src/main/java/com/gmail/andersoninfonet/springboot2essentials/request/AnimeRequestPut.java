@@ -3,6 +3,8 @@ package com.gmail.andersoninfonet.springboot2essentials.request;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+
+import lombok.Builder;
 import lombok.Data;
 
 /**
@@ -15,6 +17,7 @@ import lombok.Data;
  * @since 1.0.0
  */
 @Data
+@Builder
 public class AnimeRequestPut {
 
   @NotNull(message = "the Anime id can not be null")
