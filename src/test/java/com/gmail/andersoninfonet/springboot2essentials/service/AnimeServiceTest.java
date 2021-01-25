@@ -1,13 +1,11 @@
 package com.gmail.andersoninfonet.springboot2essentials.service;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-
 import com.gmail.andersoninfonet.springboot2essentials.model.Anime;
 import com.gmail.andersoninfonet.springboot2essentials.repository.AnimeRepository;
 import com.gmail.andersoninfonet.springboot2essentials.util.AnimeCreator;
-
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

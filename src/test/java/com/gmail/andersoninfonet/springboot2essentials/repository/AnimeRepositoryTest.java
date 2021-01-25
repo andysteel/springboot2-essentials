@@ -1,14 +1,11 @@
 package com.gmail.andersoninfonet.springboot2essentials.repository;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import java.util.List;
-
-import javax.validation.ConstraintViolationException;
-
 import com.gmail.andersoninfonet.springboot2essentials.model.Anime;
 import com.gmail.andersoninfonet.springboot2essentials.util.AnimeCreator;
 
+import static org.junit.jupiter.api.Assertions.*;
+import java.util.List;
+import javax.validation.ConstraintViolationException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

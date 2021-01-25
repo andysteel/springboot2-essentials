@@ -1,9 +1,10 @@
 package com.gmail.andersoninfonet.springboot2essentials.request;
 
 import javax.validation.constraints.NotEmpty;
-
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * <p>
@@ -16,6 +17,8 @@ import lombok.Data;
  */
 @Data
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class AnimeRequestPost {
 
   @NotEmpty(message = "the Anime name can not be empty")
