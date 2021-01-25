@@ -37,7 +37,7 @@ public class AnimeService {
    * @param pageable a {@link org.springframework.data.domain.Pageable} object.
    * @return a {@link org.springframework.data.domain.Page} object.
    */
-  public Page<Anime> list(Pageable pageable) {
+  public Page<Anime> list(final Pageable pageable) {
     return animeRepository.findAll(pageable);
   }
 
@@ -49,7 +49,7 @@ public class AnimeService {
    * @param name a {@link java.lang.String} object.
    * @return a {@link java.util.List} object.
    */
-  public List<Anime> listByName(String name) {
+  public List<Anime> listByName(final String name) {
     return animeRepository.findByName(name);
   }
 
@@ -62,7 +62,7 @@ public class AnimeService {
    * @return a {@link com.gmail.andersoninfonet.springboot2essentials.model.Anime}
    *         object.
    */
-  public Anime findById(long id) {
+  public Anime findById(final long id) {
     return animeRepository.findById(id)
             .orElseThrow(() -> new AnimeBadRequestException("Anime not found."));
   }
@@ -78,7 +78,7 @@ public class AnimeService {
    * @return a {@link com.gmail.andersoninfonet.springboot2essentials.model.Anime}
    *         object.
    */
-  public Anime save(AnimeRequestPost requestPost) {
+  public Anime save(final AnimeRequestPost requestPost) {
     return animeRepository.save(AnimeMapper.INSTANCE.fromPostToAnime(requestPost));
   }
 
@@ -89,7 +89,7 @@ public class AnimeService {
    *
    * @param id a long.
    */
-  public void delete(long id) {
+  public void delete(final long id) {
     animeRepository.delete(this.findById(id));
   }
 
@@ -102,7 +102,7 @@ public class AnimeService {
    * {@link com.gmail.andersoninfonet.springboot2essentials.request.AnimeRequestPut}
    *     object.
    */
-  public void replace(AnimeRequestPut requestPut) {
+  public void replace(final AnimeRequestPut requestPut) {
     Anime savedAnime = this.findById(requestPut.getId());
     Anime anime = AnimeMapper.INSTANCE.fromPutToAnime(requestPut);
     anime.setId(savedAnime.getId());

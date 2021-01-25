@@ -17,9 +17,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class Spring2WebMvcConfig implements WebMvcConfigurer {
 
-  /**
-   * {@inheritDoc}
-  */
+  /** {@inheritDoc} */
   @Override
   public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {
 

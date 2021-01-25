@@ -130,7 +130,8 @@ public class AnimeController {
    */
   @GetMapping(path = "teste")
   public void teste(HttpServletRequest request) {
-    String origem = request.getHeader("Origin");
-    log.info(request.getRemoteHost()+"-"+request.getRemoteAddr()+"-"+request.getLocalName()+"-"+request.getHeader("Origin")+"-"+request.getHeader("User-Agent"));
+    log.info(request.getRemoteHost() + "-" + request.getRemoteAddr()
+        + "-" + request.getLocalName() + "-" + request.getHeader("Origin")
+        + "-" + request.getHeader("User-Agent"));
   }
 }

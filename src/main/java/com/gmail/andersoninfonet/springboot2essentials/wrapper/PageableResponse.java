@@ -10,6 +10,12 @@ import lombok.Setter;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 
+/**
+ * <p>PageableResponse class.</p>
+ *
+ * @author andysteel
+ * @since 1.0.0
+ */
 @Getter
 @Setter
 public class PageableResponse<T> extends PageImpl<T> {
@@ -20,6 +26,20 @@ public class PageableResponse<T> extends PageImpl<T> {
   private int numberOfElements;
 
   @JsonCreator(mode = Mode.PROPERTIES )
+  /**
+   * <p>Constructor for PageableResponse.</p>
+   *
+   * @param content a {@link java.util.List} object.
+   * @param number a int.
+   * @param size a int.
+   * @param totalElements a int.
+   * @param last a boolean.
+   * @param first a boolean.
+   * @param totalPages a int.
+   * @param numberOfElements a int.
+   * @param pageable a {@link com.fasterxml.jackson.databind.JsonNode} object.
+   * @param sort a {@link com.fasterxml.jackson.databind.JsonNode} object.
+   */
   public PageableResponse(@JsonProperty("content") List<T> content,
         @JsonProperty("number") int number,
         @JsonProperty("size") int size,

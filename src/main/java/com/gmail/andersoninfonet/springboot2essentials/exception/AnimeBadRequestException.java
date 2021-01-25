@@ -24,7 +24,7 @@ public class AnimeBadRequestException extends RuntimeException {
    *
    * @param message String {@link java.lang.String}.
    */
-  public AnimeBadRequestException(String message) {
+  public AnimeBadRequestException(final String message) {
     super(message);
   }
 
@@ -35,7 +35,7 @@ public class AnimeBadRequestException extends RuntimeException {
    *
    * @param cause a {@link java.lang.Throwable} object.
    */
-  public AnimeBadRequestException(Throwable cause) {
+  public AnimeBadRequestException(final Throwable cause) {
     super(cause);
   }
 
@@ -47,7 +47,7 @@ public class AnimeBadRequestException extends RuntimeException {
    * @param message a {@link java.lang.String} object.
    * @param cause   a {@link java.lang.Throwable} object.
    */
-  public AnimeBadRequestException(String message, Throwable cause) {
+  public AnimeBadRequestException(final String message, final Throwable cause) {
     super(message, cause);
   }
 }

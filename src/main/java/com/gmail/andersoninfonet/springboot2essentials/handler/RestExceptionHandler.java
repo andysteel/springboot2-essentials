@@ -40,7 +40,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
    */
   @ExceptionHandler(AnimeBadRequestException.class)
   public ResponseEntity<ExceptionDetails> handlerAnimeBadRequestException(
-                                            AnimeBadRequestException ex) {
+                                            final AnimeBadRequestException ex) {
     return new ResponseEntity<>(
       ExceptionDetails.builder().title("Anime Bad Request exception.")
                       .status(HttpStatus.BAD_REQUEST.value())
@@ -49,14 +49,12 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
       HttpStatus.BAD_REQUEST);
   }
 
-  /**
-   * {@inheritDoc}
-  */
+  /** {@inheritDoc} */
   @Override
-  protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
-                                                                HttpHeaders headers,
-                                                                HttpStatus status,
-                                                                WebRequest request) {
+  protected ResponseEntity<Object> handleMethodArgumentNotValid(final MethodArgumentNotValidException ex,
+                                                                final HttpHeaders headers,
+                                                                final HttpStatus status,
+                                                                final WebRequest request) {
     List<AnimeValidationExceptionDetails> validations = new ArrayList<>();
     ex.getBindingResult().getFieldErrors().forEach(e -> {
       validations.add(
@@ -75,15 +73,13 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
                                                 HttpStatus.BAD_REQUEST);
   }
 
-  /**
-   * {@inheritDoc}
-  */
+  /** {@inheritDoc} */
   @Override
-  protected ResponseEntity<Object> handleExceptionInternal(Exception ex,
-                                                          @Nullable Object body,
-                                                          HttpHeaders headers,
-                                                          HttpStatus status,
-                                                          WebRequest request) {
+  protected ResponseEntity<Object> handleExceptionInternal(final Exception ex,
+                                                          final @Nullable Object body,
+                                                          final HttpHeaders headers,
+                                                          final HttpStatus status,
+                                                          final WebRequest request) {
 
     ExceptionDetails exceptionDetails = ExceptionDetails.builder()
                                                         .title(ex.getCause().getMessage())
