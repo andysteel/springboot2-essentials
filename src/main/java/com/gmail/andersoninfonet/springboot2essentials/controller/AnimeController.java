@@ -1,16 +1,16 @@
 package com.gmail.andersoninfonet.springboot2essentials.controller;
 
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
+
 import com.gmail.andersoninfonet.springboot2essentials.model.Anime;
 import com.gmail.andersoninfonet.springboot2essentials.request.AnimeRequestPost;
 import com.gmail.andersoninfonet.springboot2essentials.request.AnimeRequestPut;
 import com.gmail.andersoninfonet.springboot2essentials.service.AnimeService;
 import com.gmail.andersoninfonet.springboot2essentials.util.DateUtil;
-import java.time.LocalDateTime;
-import java.util.List;
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.log4j.Log4j2;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -24,6 +24,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 
 /**
  * <p>
@@ -105,7 +108,7 @@ public class AnimeController {
    * @param id long
    * @return ResponseEntity< Void >
    */
-  @DeleteMapping(path = "/{id}")
+  @DeleteMapping(path = "/admin/{id}")
   public ResponseEntity<Void> delete(@PathVariable long id) {
     service.delete(id);
     return ResponseEntity.ok().build();
