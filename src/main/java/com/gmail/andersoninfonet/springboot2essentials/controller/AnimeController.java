@@ -11,6 +11,7 @@ import com.gmail.andersoninfonet.springboot2essentials.request.AnimeRequestPut;
 import com.gmail.andersoninfonet.springboot2essentials.service.AnimeService;
 import com.gmail.andersoninfonet.springboot2essentials.util.DateUtil;
 
+import org.springdoc.api.annotations.ParameterObject;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -25,6 +26,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 
@@ -63,7 +67,8 @@ public class AnimeController {
    * @param pageable a {@link org.springframework.data.domain.Pageable} object.
    */
   @GetMapping
-  public ResponseEntity<Page<Anime>> list(Pageable pageable) {
+  @Operation(summary = "List all animes")
+  public ResponseEntity<Page<Anime>> list(@ParameterObject Pageable pageable) {
     //comented to not break the UnitTests
     //log.info(dateUtil.formatLocalDateTimeToDataBaseStyle(LocalDateTime.now()));
     return ResponseEntity.ok(service.list(pageable));
@@ -98,6 +103,10 @@ public class AnimeController {
    * @return ResponseEntity< Anime >
    */
   @PostMapping
+  @ApiResponses(value = {
+    @ApiResponse(responseCode = "201", description = "Created"),
+    @ApiResponse(responseCode = "500", description = "Internal server Error")
+  })
   public ResponseEntity<Anime> save(@Valid @RequestBody AnimeRequestPost anime) {
     return ResponseEntity.status(HttpStatus.CREATED).body(service.save(anime));
   }
